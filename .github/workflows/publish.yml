@@ -35,6 +35,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{secrets.DOCKER_USERNAME}}/${{inputs.image_name}}:{{inputs.tag}}
+        tags: ${{ secrets.registry_username }}/${{inputs.image_name}}:{{inputs.tag}}
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
