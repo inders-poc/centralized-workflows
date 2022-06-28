@@ -1,0 +1,23 @@
+name: Secret Scanning
+
+on:
+  workflow_call:
+
+jobs:
+  nodejs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+#     - name: Setup python image
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: '3.x'
+    - name: Clone gitleaks & run
+      run: |
+        apt-get update && apt-get -y install wget
+        wget https://github.com/zricethezav/gitleaks/releases/download/v8.8.11/gitleaks_8.8.11_linux_x64.tar.gz
+        tar xvf gitleaks_8.8.11_linux_x64.tar.gz
+        echo $GITHUB_WORKSPACE
+        ./gitleaks detect --source $GITHUB_WORKSPACE
+      
