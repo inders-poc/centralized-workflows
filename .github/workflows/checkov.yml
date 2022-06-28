@@ -1,0 +1,22 @@
+name: Checkov scan
+
+on:
+  workflow_call:
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Setup python image
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    - name: Install checkov
+      run: |
+        pip install checkov
+    - name: Run checkov
+      run: |
+        echo GITHUBWORKSPACE=$GITHUB_WORKSPACE
+        checkov -d $GITHUB_WORKSPACE
