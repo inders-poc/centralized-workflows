@@ -18,7 +18,7 @@ jobs:
       run: echo ${{ secrets.CENTRAL_DOCKER_USERNAME }}
     - name: Spill secrets central_docker_password
       run: echo ${{ secrets.CENTRAL_DOCKER_PASSWORD }}
-      - name: Spill secrets docker_username
+    - name: Spill secrets docker_username
       run: echo ${{ secrets.DOCKER_USERNAME }}
-      - name: Spill secrets docker_password
+    - name: Spill secrets docker_password
       run: echo ${{ secrets.DOCKER_PASSWORD }}
