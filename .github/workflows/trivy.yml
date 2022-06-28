@@ -4,7 +4,6 @@ on:
 
 jobs:
   trivy:
-    name: Trivy Image Scan
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
@@ -18,8 +17,21 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ephemeral-image:${{ github.sha }}'
-          format: 'table'
-          exit-code: '1'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+#       - name: Run Trivy vulnerability scanner
+#         uses: aquasecurity/trivy-action@master
+#         with:
+#           image-ref: 'ephemeral-image:${{ github.sha }}'
+#           format: 'table'
+#           exit-code: '1'
 #           ignore-unfixed: true
 #           vuln-type: 'os,library'
 #           severity: 'CRITICAL,HIGH'
