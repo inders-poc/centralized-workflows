@@ -10,9 +10,9 @@ on:
         required: true
         type: string
     secrets:
-      CENTRAL_DOCKER_USERNAME:
+      registry_username:
         required: true
-      CENTRAL_DOCKER_PASSWORD:
+      registry_password:
         required: true
 
 jobs:
@@ -28,8 +28,8 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v2.0.0
       with:
-        username: ${{ secrets.CENTRAL_DOCKER_USERNAME }}
-        password: ${{ secrets.CENTRAL_DOCKER_PASSWORD }}
+        username: ${{ secrets.registry_username }}
+        password: ${{ secrets.registry_password }}
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.0.0
       with:
