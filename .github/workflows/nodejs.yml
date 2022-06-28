@@ -1,10 +1,7 @@
 name: Centralized Workflows
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_call:
 
 jobs:
   pre-build-checks:
