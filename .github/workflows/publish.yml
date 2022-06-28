@@ -9,6 +9,11 @@ on:
       tag:
         required: true
         type: string
+    secrets:
+      CENTRAL_DOCKER_USERNAME:
+        required: true
+      CENTRAL_DOCKER_PASSWORD:
+        required: true
 
 jobs:
   publish:
