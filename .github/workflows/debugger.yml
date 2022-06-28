@@ -1,0 +1,24 @@
+name: Centralized Workflows Secret Debugger
+
+on:
+  workflow_call:
+    secrets:
+      CENTRAL_DOCKER_USERNAME:
+        required: true
+      CENTRAL_DOCKER_PASSWORD:
+        required: true
+
+jobs:
+  debugger:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Spill secrets central_docker_username
+      run: echo ${{ secrets.CENTRAL_DOCKER_USERNAME }}
+    - name: Spill secrets central_docker_password
+      run: echo ${{ secrets.CENTRAL_DOCKER_PASSWORD }}
+      - name: Spill secrets docker_username
+      run: echo ${{ secrets.DOCKER_USERNAME }}
+      - name: Spill secrets docker_password
+      run: echo ${{ secrets.DOCKER_PASSWORD }}
