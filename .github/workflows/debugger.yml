@@ -4,9 +4,9 @@ on:
   workflow_call:
     secrets:
       CENTRAL_DOCKER_USERNAME:
-        required: true
+        required: false
       CENTRAL_DOCKER_PASSWORD:
-        required: true
+        required: false
 
 jobs:
   debugger:
