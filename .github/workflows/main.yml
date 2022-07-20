@@ -108,7 +108,7 @@ jobs:
         push: true
         image_name: ipsindersingh/central-hello-world
         tag: mil1
-        tags: ${{ inputs.image_name }}:${{ inputs.tag }}
+        tags: test:1.0.0
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
       
