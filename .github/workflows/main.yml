@@ -1,11 +1,7 @@
 name: Node.js CI-2
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-#   workflow_dispatch:
+  workflow_call:
 
 jobs:
 #   pre-build-checks:
